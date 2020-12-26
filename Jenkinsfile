@@ -1,9 +1,12 @@
+podTemplate {
 node(POD_LABEL) {
-    stage('Get a Maven project') {
-        git 'https://github.com/jenkinsci/kubernetes-plugin.git'
-        container('maven') {
-            stage('Build a Maven project') {
-                sh 'mvn -B clean install'
+    stage('Test') {
+            try {
+                sh 'mkdir test'
+                println "dir test created successfuly"
+            }
+            catch(err) {
+                println "dir test doesnt exist"
             }
         }
     }
